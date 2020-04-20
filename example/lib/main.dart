@@ -50,14 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
 class SecondPage extends StatefulWidget {
   SecondPage({Key key}) : super(key: key);
   @override
   _SecondPageState createState() => _SecondPageState();
 }
 
-class _SecondPageState extends State<SecondPage> with HandleFocusNodesOverlayMixin { //Use Mixin HandleFocusNodesOverlayMixin
+class _SecondPageState extends State<SecondPage>
+    with HandleFocusNodesOverlayMixin {
+  //Use Mixin HandleFocusNodesOverlayMixin
 
   FocusNodeOverlay _nodeCats;
   FocusNodeOverlay _nodeDogs;
@@ -157,7 +158,8 @@ class _SecondPageState extends State<SecondPage> with HandleFocusNodesOverlayMix
             padding: const EdgeInsets.all(16),
             child: TextFormField(
               focusNode: _nodePassword, // CustomFocusNode
-              controller: _nodePassword.controller, // use controller from focusNode
+              controller:
+                  _nodePassword.controller, // use controller from focusNode
               textInputAction: TextInputAction.done,
               obscureText: true,
               onFieldSubmitted: (term) async {

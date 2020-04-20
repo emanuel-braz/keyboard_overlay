@@ -4,7 +4,6 @@ import 'package:keyboard_overlay/src/focus_node_overlay.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class KeyboardOverlayManager {
-
   KeyboardVisibilityNotification visibility;
   bool get isVisible => visibility.isKeyboardVisible;
   bool removeKeyboardOnScreenTouch = false;
@@ -65,11 +64,12 @@ class KeyboardOverlayManager {
     dismissKeyboard(context);
   }
 
-  static setDebugMode(bool value){
+  static setDebugMode(bool value) {
     if (value) {
-      debugPrint = debugPrintSynchronously; //(String text, {int wrapWidth}) => print(value);
+      debugPrint =
+          debugPrintSynchronously; //(String text, {int wrapWidth}) => print(value);
     } else {
-      debugPrint = (String text, {int wrapWidth}){};
+      debugPrint = (String text, {int wrapWidth}) {};
     }
   }
 }

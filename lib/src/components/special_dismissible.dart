@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/keyboard_overlay.dart';
 
 class SpecialDismissable extends StatefulWidget {
-
   final void Function() onOkButton;
   final String title;
   SpecialDismissable({this.onOkButton, this.title});
@@ -11,18 +10,17 @@ class SpecialDismissable extends StatefulWidget {
   _SpecialDismissableState createState() => _SpecialDismissableState();
 }
 
-class _SpecialDismissableState extends State<SpecialDismissable> with SingleTickerProviderStateMixin {
-  
+class _SpecialDismissableState extends State<SpecialDismissable>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<Offset> _offsetAnimation;
   double _wHeight = 1;
 
   @override
   void initState() {
-
     super.initState();
 
-   _controller = AnimationController(
+    _controller = AnimationController(
       duration: const Duration(milliseconds: 800),
       vsync: this,
     );
@@ -46,10 +44,9 @@ class _SpecialDismissableState extends State<SpecialDismissable> with SingleTick
 
   @override
   Widget build(BuildContext context) {
-
     return SlideTransition(
-       position: _offsetAnimation,
-          child: Material(
+      position: _offsetAnimation,
+      child: Material(
         child: Container(
             height: _wHeight,
             color: Colors.grey,
@@ -70,12 +67,12 @@ class _SpecialDismissableState extends State<SpecialDismissable> with SingleTick
                         label: 'OK',
                         autoDismiss: false,
                         onSubmitted: () {
-
-                          // Callback 
+                          // Callback
                           widget.onOkButton();
 
-                          _controller.reverse().whenCompleteOrCancel((){
-                            KeyboardOverlayManager().dismissKeyboardAndOverlay(context);
+                          _controller.reverse().whenCompleteOrCancel(() {
+                            KeyboardOverlayManager()
+                                .dismissKeyboardAndOverlay(context);
                           });
                         }),
                   ),

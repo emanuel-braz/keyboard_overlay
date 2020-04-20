@@ -13,12 +13,19 @@ class DoneButtonIos extends StatelessWidget {
   final List<String> platforms;
 
   DoneButtonIos(
-      {Key key, this.backgroundColor, this.textColor, this.onSubmitted, this.label = 'Done', this.autoDismiss = true, this.platforms = const ['android', 'ios']})
+      {Key key,
+      this.backgroundColor,
+      this.textColor,
+      this.onSubmitted,
+      this.label = 'Done',
+      this.autoDismiss = true,
+      this.platforms = const ['android', 'ios']})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS && platforms.contains('ios') || Platform.isAndroid && platforms.contains('android'))
+    if (Platform.isIOS && platforms.contains('ios') ||
+        Platform.isAndroid && platforms.contains('android'))
       return Container(
         height: 45,
         width: double.infinity,
@@ -30,7 +37,8 @@ class DoneButtonIos extends StatelessWidget {
             child: CupertinoButton(
               padding: EdgeInsets.only(right: 24.0, top: 8.0, bottom: 8.0),
               onPressed: () {
-                if (autoDismiss) KeyboardOverlayManager().dismissKeyboardAndOverlay(context);
+                if (autoDismiss)
+                  KeyboardOverlayManager().dismissKeyboardAndOverlay(context);
                 if (this.onSubmitted != null) this.onSubmitted();
               },
               child: Text(label,

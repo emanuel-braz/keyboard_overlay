@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TopKeyboardUtil extends StatefulWidget {
-  
   final Widget child;
   TopKeyboardUtil(this.child);
 
