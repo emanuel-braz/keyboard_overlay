@@ -7,7 +7,7 @@ environment:
   sdk: '>=2.15.0 <3.0.0'
 
 dependencies:
-  keyboard_visibility: ^0.5.6
+  keyboard_visibility: 0.5.6
   flutter:
     sdk: flutter
 
