@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/src/focus_node_overlay.dart';
 import 'package:keyboard_overlay/src/keyboard_overlay_manager.dart';
@@ -8,19 +10,17 @@ mixin HandleFocusNodesOverlayMixin<T extends StatefulWidget> on State<T> {
   double get keyboardDy => MediaQuery.of(context).viewInsets.bottom;
 
   FocusNode GetFocusNodeOverlay<T extends Widget>(
-      {T child, TextEditingController controller}) {
+      {required T child, TextEditingController? controller}) {
     FocusNodeOverlay focusNode =
         KeyboardOverlayManager().registerFocusNode(context, child: child);
 
-    // adiciona referencia para ser descartada automaticamente
     /// add reference to be automatically discarded
     this.nodes.add(focusNode);
 
     if (controller != null) {
-      // Vincula controller ao node
       /// Attach node to controller
       focusNode.add(controller);
-      // Armazena referencia para ser descartada automaticamente
+
       /// Stores reference to be discarded automatically
       this.controllers.add(controller);
     }
@@ -30,12 +30,10 @@ mixin HandleFocusNodesOverlayMixin<T extends StatefulWidget> on State<T> {
 
   void disposeAllNodes() {
     disposeNodes(this.nodes);
-    this.nodes = null;
   }
 
   void disposeAllControllers() {
     disposeControllers(this.controllers);
-    this.controllers = null;
   }
 
   void disposeNodes(List<FocusNodeOverlay> nodeList) {
@@ -44,6 +42,7 @@ mixin HandleFocusNodesOverlayMixin<T extends StatefulWidget> on State<T> {
       focusNode.removeListener(focusNode.callbackListener);
       focusNode.dispose();
     });
+    nodeList.clear();
   }
 
   void disposeControllers(List<TextEditingController> ctrls) {
@@ -51,6 +50,7 @@ mixin HandleFocusNodesOverlayMixin<T extends StatefulWidget> on State<T> {
       debugPrint('[CONTROLLER DISPOSED]: ${controller.hashCode}');
       controller.dispose();
     });
+    ctrls.clear();
   }
 
   void dismissKeyboard() {

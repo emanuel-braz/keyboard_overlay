@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Text(
           'Go to next screen',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/keyboard_overlay.dart';
 
 class DoneButtonIos extends StatelessWidget {
-  final Color backgroundColor;
-  final Color textColor;
-  final Function() onSubmitted;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final Function()? onSubmitted;
   final String label;
   final bool autoDismiss;
   final List<String> platforms;
 
   DoneButtonIos(
-      {Key key,
+      {Key? key,
       this.backgroundColor,
       this.textColor,
       this.onSubmitted,
@@ -39,7 +39,7 @@ class DoneButtonIos extends StatelessWidget {
               onPressed: () {
                 if (autoDismiss)
                   KeyboardOverlayManager().dismissKeyboardAndOverlay(context);
-                if (this.onSubmitted != null) this.onSubmitted();
+                if (this.onSubmitted != null) this.onSubmitted?.call();
               },
               child: Text(label,
                   style: TextStyle(
@@ -49,6 +49,6 @@ class DoneButtonIos extends StatelessWidget {
           ),
         ),
       );
-    return Container();
+    return SizedBox.shrink();
   }
 }
