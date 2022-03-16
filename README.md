@@ -9,7 +9,7 @@
 #### Add dependency
 ```dart
 dependencies:
-    keyboard_overlay: ^0.1.0
+    keyboard_overlay: ^1.0.0
 ```
 
 ```dart

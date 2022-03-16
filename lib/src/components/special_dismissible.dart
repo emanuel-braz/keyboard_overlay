@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/keyboard_overlay.dart';
 
 class SpecialDismissable extends StatefulWidget {
-  final void Function() onOkButton;
-  final String title;
+  final void Function()? onOkButton;
+  final String? title;
   SpecialDismissable({this.onOkButton, this.title});
 
   @override
@@ -12,8 +12,8 @@ class SpecialDismissable extends StatefulWidget {
 
 class _SpecialDismissableState extends State<SpecialDismissable>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _offsetAnimation;
+  late AnimationController _controller;
+  late Animation<Offset> _offsetAnimation;
   double _wHeight = 1;
 
   @override
@@ -67,8 +67,7 @@ class _SpecialDismissableState extends State<SpecialDismissable>
                         label: 'OK',
                         autoDismiss: false,
                         onSubmitted: () {
-                          // Callback
-                          widget.onOkButton();
+                          widget.onOkButton?.call();
 
                           _controller.reverse().whenCompleteOrCancel(() {
                             KeyboardOverlayManager()

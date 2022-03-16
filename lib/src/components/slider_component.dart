@@ -5,23 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:keyboard_overlay/keyboard_overlay.dart';
 
 class SliderComponent extends StatefulWidget {
-  final Color backgroundColor;
-  final Color textColor;
-  final Function() onSubmitted;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final Function()? onSubmitted;
   final String label;
   final bool autoDismiss;
   final List<String> platforms;
   final Function(double) controller;
 
   SliderComponent(
-      {Key key,
+      {Key? key,
       this.backgroundColor,
       this.textColor,
       this.onSubmitted,
       this.label = 'Done',
       this.autoDismiss = true,
       this.platforms = const ['android', 'ios'],
-      this.controller})
+      required this.controller})
       : super(key: key);
 
   @override
@@ -75,8 +75,7 @@ class _SliderComponentState extends State<SliderComponent> {
                     if (widget.autoDismiss)
                       KeyboardOverlayManager()
                           .dismissKeyboardAndOverlay(context);
-                    if (this.widget.onSubmitted != null)
-                      this.widget.onSubmitted();
+                    this.widget.onSubmitted?.call();
                   },
                   child: Text(widget.label,
                       style: TextStyle(
